@@ -1,5 +1,6 @@
 import express, { Express, Request, Response } from 'express';
 import dotenv from 'dotenv';
+import { logger } from './utils';
 
 dotenv.config();
 
@@ -11,5 +12,6 @@ app.get('/', (req: Request, res: Response) => {
 });
 
 app.listen(port, () => {
-  console.log(`⚡️ [server]: Server is running at https://localhost:${port}`);
+  logger.info('⚡️ [server]: Environment is set to %s', process.env.NODE_ENV);
+  logger.info(`⚡️ [server]: Server is running at https://localhost:${port}`);
 });
