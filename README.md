@@ -18,7 +18,7 @@ Here are the endpoints and routes available for this app:
 
 ## Dev environment setup
 
-Previously I used `ts-node-dev`, however that tool is unreliable. There are many different ways of setting up a Typescript node project that reloads on change, as described in the StackOverflow answer [How to watch and reload TS Node when Typescript files change](https://stackoverflow.com/questions/37979489/how-to-watch-and-reload-ts-node-when-typescript-files-change), and in the end I went with `swc` + `ts-node` + `nodemon`, which was setup like this:
+Previously I used `ts-node-dev`, however that tool is unreliable. There are many different ways of setting up a Typescript node project that reloads on change, as described in the StackOverflow answer [How to watch and reload TS Node when Typescript files change](https://stackoverflow.com/questions/37979489/how-to-watch-and-reload-ts-node-when-typescript-files-change), and in the end I went with [`swc` + `ts-node` + `nodemon`](https://github.com/TypeStrong/ts-node#swc-1), which was setup like this:
 
 1. Install `nodemon`: `npm install --save-dev nodemon`
 2. Install `ts-node` and `swc`: `npm install --save-dev ts-node @swc/core @swc/helpers regenerator-runtime`
