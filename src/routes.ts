@@ -20,6 +20,13 @@ const use =
   (req: Request, res: Response, next: NextFunction) =>
     Promise.resolve(fn(req, res, next)).catch(next);
 
+/**
+ * This receives an express app, a router, and configures them to handle the
+ * routes.
+ *
+ * @param app Express application
+ * @param router Router
+ */
 export const routes = (app: Express, router: Router): void => {
   router.get('/errors/not-found', use(ErrorController.notFound));
   router.get('/errors/async-example', use(ErrorController.asyncExample));
@@ -27,5 +34,6 @@ export const routes = (app: Express, router: Router): void => {
     '/errors/server-unavailable',
     use(ErrorController.serverUnavailable)
   );
+
   router.post('/users', use(UsersController.create));
 };
