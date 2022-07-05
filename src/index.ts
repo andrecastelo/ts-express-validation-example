@@ -14,10 +14,10 @@ app.get('/', (req: Request, res: Response) => {
   res.send('Express + TypeScript Server');
 });
 
+app.use(express.json());
 routes(app, router);
 app.use('/', router);
 
-app.use(express.json());
 app.use(errorHandler);
 
 app.listen(port, () => {

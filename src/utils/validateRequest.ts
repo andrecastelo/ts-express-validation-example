@@ -1,6 +1,6 @@
 import { Request } from 'express';
 import { AnyZodObject, z, ZodError } from 'zod';
-import { badRequest } from '@hapi/boom';
+import { badRequest, Boom } from '@hapi/boom';
 
 export function validateRequest<T extends AnyZodObject>(
   schema: T,
@@ -10,7 +10,10 @@ export function validateRequest<T extends AnyZodObject>(
     return schema.parse(req);
   } catch (error) {
     if (error instanceof ZodError) {
-      throw badRequest(error.message, error.format());
+      throw new Boom('Bad Request', {
+        statusCode: 400,
+        data: error.format(),
+      });
     }
     throw badRequest(JSON.stringify(error));
   }

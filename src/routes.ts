@@ -7,6 +7,7 @@ import {
   Router,
 } from 'express';
 import { UsersController, ErrorController } from './controllers';
+import { validateMiddleware } from './middleware';
 
 /**
  * This function wraps the request handler in a promise resolution callback
@@ -35,5 +36,13 @@ export const routes = (app: Express, router: Router): void => {
     use(ErrorController.serverUnavailable)
   );
 
-  router.post('/users', use(UsersController.create));
+  router.post(
+    '/users/function',
+    use(UsersController.createWithValidateFunction)
+  );
+  router.post(
+    '/users/middleware',
+    validateMiddleware(UsersController.createValidation),
+    use(UsersController.createWithMiddleware)
+  );
 };
