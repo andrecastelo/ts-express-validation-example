@@ -1,4 +1,4 @@
-import { notFound } from '@hapi/boom';
+import { notFound, serverUnavailable } from '@hapi/boom';
 import { Request, Response } from 'express';
 
 const getSomeResourceElsewhere = () => {
@@ -14,5 +14,8 @@ export const ErrorController = {
   asyncExample: async (req: Request, res: Response) => {
     const { data } = await getSomeResourceElsewhere();
     res.status(200).json(data);
+  },
+  serverUnavailable: (req: Request, res: Response) => {
+    throw serverUnavailable();
   },
 };
