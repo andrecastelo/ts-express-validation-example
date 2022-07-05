@@ -20,7 +20,7 @@ export const logger = pino(
     transport: ENABLE_PINO_PRETTY ? pinoPrettyTransport : undefined,
     timestamp: () => `,"@timestamp":"${new Date(Date.now()).toISOString()}"`,
     messageKey: 'message',
-    name: 'distributor-frontend-gateway',
+    name: 'example-typescript-app',
     formatters: {
       level: (label) => {
         return { level: label.toUpperCase() };
